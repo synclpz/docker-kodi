@@ -20,7 +20,7 @@
 
 FROM ubuntu:bionic
 
-ARG KODI_VERSION=18.8
+ARG KODI_VERSION=18.9
 
 # https://github.com/ehough/docker-nfs-server/pull/3#issuecomment-387880692
 ARG DEBIAN_FRONTEND=noninteractive
@@ -46,7 +46,7 @@ RUN apt-get update                                                        && \
 #  - pulseaudio                   in case the user prefers PulseAudio instead of ALSA
 #  - tzdata                       necessary for timezone selection
 RUN packages="                                               \
-                                                             \
+    \
     ca-certificates                                          \
     kodi=2:${KODI_VERSION}+*                                 \
     kodi-eventclients-kodi-send                              \
@@ -104,7 +104,7 @@ RUN packages="                                               \
     locales                                                  \
     pulseaudio                                               \
     tzdata"                                               && \
-                                                             \
+    \
     apt-get update                                        && \
     apt-get install -y --no-install-recommends $packages  && \
     apt-get -y --purge autoremove                         && \
